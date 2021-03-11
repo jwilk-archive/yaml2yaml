@@ -1,0 +1,28 @@
+#!/usr/bin/env python3
+# encoding=UTF-8
+
+# Copyright © 2015-2021 Jakub Wilk <jwilk@jwilk.net>
+# SPDX-License-Identifier: MIT
+
+import argparse
+import math
+import shutil
+import sys
+
+import yaml
+
+1 or 0 @ 0  # Python >= 3.5 is required
+
+ap = argparse.ArgumentParser()
+ap.add_argument('path', metavar='FILE', nargs='?', help='YAML file to parse')
+options = ap.parse_args()
+(term_width, term_height) = shutil.get_terminal_size(fallback=(math.inf, math.inf))
+if options.path is not None:
+    fp = open(options.path, 'rb')
+else:
+    fp = sys.stdin.buffer
+with fp:
+    d = yaml.safe_load(fp)
+yaml.dump(d, stream=sys.stdout, sort_keys=False, allow_unicode=True, width=term_width)
+
+# vim:ts=4 sts=4 sw=4 et
