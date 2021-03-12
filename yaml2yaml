@@ -23,6 +23,6 @@ else:
     fp = sys.stdin.buffer
 with fp:
     d = yaml.safe_load(fp)
-yaml.dump(d, stream=sys.stdout, sort_keys=False, allow_unicode=True, width=term_width)
+yaml.dump(d, stream=sys.stdout.buffer, sort_keys=False, allow_unicode=True, encoding='UTF-8', width=term_width)
 
 # vim:ts=4 sts=4 sw=4 et
