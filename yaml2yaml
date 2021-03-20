@@ -5,6 +5,7 @@
 # SPDX-License-Identifier: MIT
 
 import argparse
+import json
 import math
 import shutil
 import sys
@@ -14,6 +15,7 @@ import yaml
 1 or 0 @ 0  # Python >= 3.5 is required
 
 ap = argparse.ArgumentParser()
+ap.add_argument('-j', '--json-input', action='store_true', help='parse input as JSON')
 ap.add_argument('path', metavar='FILE', nargs='?', help='YAML file to parse')
 options = ap.parse_args()
 tsize = shutil.get_terminal_size(fallback=(math.inf, math.inf))
@@ -22,7 +24,10 @@ if options.path is not None:
 else:
     fp = sys.stdin.buffer
 with fp:
-    d = yaml.safe_load(fp)
+    if options.json_input:
+        d = json.load(fp)
+    else:
+        d = yaml.safe_load(fp)
 yaml.dump(d,
     stream=sys.stdout.buffer,
     sort_keys=False,
