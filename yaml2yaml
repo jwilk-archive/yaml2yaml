@@ -36,7 +36,7 @@ yaml.dump(d,
     sort_keys=False,
     allow_unicode=True,
     encoding='UTF-8',
-    width=tsize.columns,
+    width=(tsize.columns - 6),
 )
 
 # vim:ts=4 sts=4 sw=4 et
