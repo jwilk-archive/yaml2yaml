@@ -1,0 +1,16 @@
+.. code:: console
+
+   $ yaml2yaml --help
+   usage: yaml2yaml [-h] [-j] [FILE]
+
+   positional arguments:
+     FILE              YAML file to parse
+
+   optional arguments:
+     -h, --help        show this help message and exit
+     -j, --json-input  parse input as JSON
+
+   $ yaml2yaml <<< "{'a': 'b'}"
+   a: b
+
+.. vim:ts=3 sts=3 sw=3 et ft=rst
