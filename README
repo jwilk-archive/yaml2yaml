@@ -6,7 +6,7 @@
    positional arguments:
      FILE              YAML file to parse
 
-   optional arguments:
+   options:
      -h, --help        show this help message and exit
      -j, --json-input  parse input as JSON
 

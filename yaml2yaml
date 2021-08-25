@@ -16,6 +16,9 @@ import yaml
 1 or 0 @ 0  # Python >= 3.5 is required
 
 ap = argparse.ArgumentParser()
+if sys.version_info < (3, 10):
+    # https://bugs.python.org/issue9694
+    ap._optionals.title = 'options'
 ap.add_argument('-j', '--json-input', action='store_true', help='parse input as JSON')
 ap.add_argument('path', metavar='FILE', nargs='?', help='YAML file to parse')
 options = ap.parse_args()
