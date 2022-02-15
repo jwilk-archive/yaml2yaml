@@ -33,6 +33,10 @@ jobs:
       with:
         path: ~/.cache/pip
         key: pip-${{matrix.os}}-python${{matrix.python-version}}
+    - name: set up APT
+      run: |
+        printf 'Apt::Install-Recommends "false";\n' | sudo tee -a /etc/apt/apt.conf
+        sudo apt-get update
     - name: install wheel
       run:
         python3 -m pip install wheel
