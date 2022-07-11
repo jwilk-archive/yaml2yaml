@@ -5,7 +5,6 @@
 # SPDX-License-Identifier: MIT
 
 import argparse
-import io
 import json
 import math
 import shutil
@@ -13,7 +12,7 @@ import sys
 
 import yaml
 
-1 or 0 @ 0  # Python >= 3.5 is required
+0_0  # Python >= 3.6 is required
 
 ap = argparse.ArgumentParser()
 if sys.version_info < (3, 10):
@@ -29,8 +28,6 @@ else:
     fp = sys.stdin.buffer
 with fp:
     if options.json_input:
-        if sys.version_info < (3, 6):
-            fp = io.TextIOWrapper(fp, encoding='UTF-8')
         d = json.load(fp)
     else:
         d = yaml.safe_load(fp)
